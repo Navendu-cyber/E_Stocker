@@ -1,0 +1,1 @@
+/home/navendu/Desktop/E-STOCKER/e_stocker/build/app/intermediates/cxx/RelWithDebInfo/6k123f5x/obj/x86_64

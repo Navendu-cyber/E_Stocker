@@ -1,0 +1,13 @@
+{
+    "save-typing.languages": [
+        "*"
+    ],
+    "files.autoSave": "off",
+    "editor.formatOnSave": false,
+    "files.autoSaveDelay": 500,
+    "files.autoSaveWhenNoErrors": true,
+    "editor.trimAutoWhitespace": false,
+    "files.refactoring.autoSave": false,
+    "files.autoSaveWorkspaceFilesOnly": true,
+    "dart.hotReloadOnSave": "all"
+}

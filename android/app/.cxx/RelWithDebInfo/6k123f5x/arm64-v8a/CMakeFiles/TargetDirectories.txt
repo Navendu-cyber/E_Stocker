@@ -1,0 +1,2 @@
+/home/navendu/Desktop/E-STOCKER/e_stocker/android/app/.cxx/RelWithDebInfo/6k123f5x/arm64-v8a/CMakeFiles/edit_cache.dir
+/home/navendu/Desktop/E-STOCKER/e_stocker/android/app/.cxx/RelWithDebInfo/6k123f5x/arm64-v8a/CMakeFiles/rebuild_cache.dir
