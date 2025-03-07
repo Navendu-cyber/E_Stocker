@@ -109,7 +109,7 @@ class _EditProductState extends State<EditProduct> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.black
-                                        .withOpacity(0.1), // Soft shadow
+                                        .withOpacity(0.1),
                                     blurRadius: 8,
                                     spreadRadius: 2,
                                     offset: Offset(0, 4),

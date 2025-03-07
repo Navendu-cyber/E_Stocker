@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:e_stocker/common%20widgets/customtextfield.dart';
+import 'package:e_stocker/common%20widgets/filePicker.dart';
 import 'package:e_stocker/custom%20functions/image_picker.dart';
 import 'package:e_stocker/custom%20functions/randomid.dart';
 import 'package:e_stocker/custom%20functions/validations.dart';
@@ -104,7 +105,7 @@ class _AddProductState extends State<AddProduct> {
                       children: [
                         InkWell(
                           onLongPress: () {
-                            selectingimage();
+                            FilePickerWidget();
                           },
                           onTap: () {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
