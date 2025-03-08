@@ -8,6 +8,7 @@ import 'package:e_stocker/custom%20functions/validations.dart';
 import 'package:e_stocker/database/db_functions/category_funct.dart';
 import 'package:e_stocker/database/db_functions/product_functions.dart';
 import 'package:e_stocker/database/db_models/product_model.dart';
+import 'package:e_stocker/screens/add_screens/addProductScanner.dart';
 import 'package:flutter/material.dart';
 
 class AddProduct extends StatefulWidget {
@@ -42,12 +43,44 @@ class _AddProductState extends State<AddProduct> {
     super.dispose();
   }
 
-  Future<void> scanBarcode() async {
-    try {
-      var result = await BarcodeScanner.scan();
-      String scannedCode = result.rawContent.trim();
+  void onScanned(String scannedCode) {
+    if (scannedCode.trim().isNotEmpty) {
+      bool barcodeExists = productbox.values.any(
+        (product) => product.barcodeId?.trim() == scannedCode,
+      );
 
-      if (scannedCode.isNotEmpty) {
+      if (barcodeExists) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content:
+                  Text('This barcode already exists for another product.')),
+        );
+      } else {
+        setState(() {
+          _scannedBarcode = scannedCode;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Barcode Scanned: $_scannedBarcode')),
+        );
+      }
+    } else {
+      setState(() => _scannedBarcode = null);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('No barcode detected.')),
+      );
+    }
+  }
+
+  Future<void> scanBarcode(BuildContext context) async {
+    try {
+      String? scannedCode = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => BarcodeScannerPage(onScanned: onScanned),
+        ),
+      );
+
+      if (scannedCode != null && scannedCode.trim().isNotEmpty) {
         bool barcodeExists = productbox.values.any(
           (product) => product.barcodeId?.trim() == scannedCode,
         );
@@ -85,7 +118,7 @@ class _AddProductState extends State<AddProduct> {
         actions: [
           IconButton(
               onPressed: () {
-                scanBarcode();
+                scanBarcode(context);
               },
               icon: Icon(Icons.barcode_reader))
         ],
